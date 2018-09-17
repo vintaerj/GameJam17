@@ -238,7 +238,37 @@ namespace AlgoStar.Boost
         }
 
 
-      
+        public List<Noeud> rechercherChemin(Noeud noeudDepart,Noeud noeudFinal)
+        {
+            
+            List<Noeud> list = algoAStar(noeudDepart,noeudFinal);
+            List<Noeud> res = new List<Noeud>();
+            
+            foreach (var n in list)
+            {
+                if (n.Indice == noeudFinal.Indice)
+                {
+                    Noeud noeud = n;
+                   
+                    while (noeud.Parent != null)
+                    {
+                        res.Add(noeud);
+                        noeud = noeud.Parent;
+                       
+                    }
+                    
+                    res.Add(noeud);
+                    
+                   
+                 
+                }
+              
+               
+            }
+
+            res.Reverse();
+            return res;
+        }
         
         
 
