@@ -1,0 +1,11 @@
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\GameJam17.deps.json
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\GameJam17.runtimeconfig.json
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\GameJam17.runtimeconfig.dev.json
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\GameJam17.dll
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\GameJam17.pdb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.csprojAssemblyReference.cache
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.csproj.CoreCompileInputs.cache
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.AssemblyInfoInputs.cache
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.AssemblyInfo.cs
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.dll
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.pdb
