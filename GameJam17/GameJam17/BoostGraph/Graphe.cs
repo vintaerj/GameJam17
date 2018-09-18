@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 
 namespace AlgoStar.Boost
 {
@@ -55,7 +56,7 @@ namespace AlgoStar.Boost
                 for (int column = 0; column< tab.GetLength(1); column++)
                 {
                     // Creation du noeud
-                    Noeud noeud = new Noeud(new Vector2(line,column));
+                    Noeud noeud = new Noeud(new Vector2(column,line));
                     noeud.Obstacle = tab[line, column];
 
                     if (tab[line, column] == 0)
@@ -89,13 +90,13 @@ namespace AlgoStar.Boost
                 for (int column = 0; column< tab.GetLength(1); column++)
                 {
 
-                    Noeud noeudCourant  = g.getNoeud(new Vector2(line, column));
+                    Noeud noeudCourant  = g.getNoeud(new Vector2(column,line));
                     if (noeudCourant != null)
                     {
                         if (line > 0) // we check up
                         {
                             
-                            noeudTeste = g.getNoeud(new Vector2(line-1,column));
+                            noeudTeste = g.getNoeud(new Vector2(column,line-1));
                             if(noeudTeste != null)
                                 noeudCourant.ListNoeudAdjacents.Add(noeudTeste);
                         }
@@ -103,7 +104,7 @@ namespace AlgoStar.Boost
                         if (line < tab.GetLength(0)-1) // we check down
                         {
                            
-                            noeudTeste = g.getNoeud(new Vector2(line + 1,column));
+                            noeudTeste = g.getNoeud(new Vector2(column,line + 1));
                            
                          
                             if(noeudTeste != null)
@@ -114,7 +115,7 @@ namespace AlgoStar.Boost
                         if (column > 0) // we check left
                         {
                       
-                            noeudTeste = g.getNoeud(new Vector2(line,column-1));
+                            noeudTeste = g.getNoeud(new Vector2(column-1,line));
                             if(noeudTeste != null)
                                 noeudCourant.ListNoeudAdjacents.Add(noeudTeste);
                         }
@@ -122,7 +123,7 @@ namespace AlgoStar.Boost
                         if (column < tab.GetLength(1) - 1) // we check right
                         {
                             
-                            noeudTeste = g.getNoeud(new Vector2(line,column+1));
+                            noeudTeste = g.getNoeud(new Vector2(column+1,line));
                             if(noeudTeste != null)
                                 noeudCourant.ListNoeudAdjacents.Add(noeudTeste);
                         }
