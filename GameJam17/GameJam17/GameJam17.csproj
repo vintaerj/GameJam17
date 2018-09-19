@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <MonoGameContentReference Include="**\*.mgcb" />
+        <MonoGameContentReference Remove="Ressources\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -16,7 +17,18 @@
 
     <ItemGroup>
       <Folder Include="BoostGraph" />
-      <Folder Include="Ressources\Vehicules" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Ressources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Ressources\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Ressources\**" />
     </ItemGroup>
 
 </Project>
