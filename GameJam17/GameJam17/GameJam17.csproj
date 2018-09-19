@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <Folder Include="BoostGraph" />
+      <Folder Include="Ressources\Vehicules" />
     </ItemGroup>
 
 </Project>
