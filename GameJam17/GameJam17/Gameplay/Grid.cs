@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Mime;
 using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
+using System.Threading;
 using AlgoStar.Boost;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -18,7 +19,6 @@ namespace GameJam17.Gameplay
         public Graph graph;
         public int[,] grid;
         public int[,] gridMur;
-        private Texture2D white;
         private Texture2D murGauche;
         private Texture2D murHaut;
         private Texture2D murDroite;
@@ -47,9 +47,7 @@ namespace GameJam17.Gameplay
         // Chargement des images.
         public void Load(GraphicsDevice g,ContentManager c)
         {
-            white = new Texture2D(g,1,1);
-            white.SetData(new Color[]{Color.White});
-
+          
             murGauche = c.Load<Texture2D>("Ressources/Salles/murGauche");
             murHaut = c.Load<Texture2D>("Ressources/Salles/murHaut");
             murDroite = c.Load<Texture2D>("Ressources/Salles/murDroite");
@@ -84,40 +82,120 @@ namespace GameJam17.Gameplay
         // dessine le sol .
         private void DrawSol(SpriteBatch sp)
         {
+
+            int posX = OriginX;
+            int posY = OriginY;
+            int cell = -1;
+            
             for (int line = 0; line < grid.GetLength(0); line++)
             {
                
                 for (int column = 0; column < grid.GetLength(1); column++)
                 {
+
                    
-                    int cell = grid[line, column];
+                    cell = grid[line, column];
+                    
                     if (cell == 0)
                     {
-                        sp.Draw(white,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                        sp.Draw(sol,new Rectangle(posX,posY,TileWidth,TileHeight),Color.White);
                     }
+
+                    if(cell == 0)
+                        posX = posX + TileWidth;
 
 
 
 
                 }
+                
+                if(cell == 1)
+                    posY = posY + TileHeight;
+                
+                posX = OriginX;
 
-               
+
             }
         }
         
         // dessine les murs .
         private void DrawMur(SpriteBatch sp)
         {
-            for (int line = 0; line < grid.GetLength(0); line++)
+            for (int line = 0; line < gridMur.GetLength(0); line++)
             {
                
-                for (int column = 0; column < grid.GetLength(1); column++)
+                for (int column = 0; column < gridMur.GetLength(1); column++)
                 {
                    
-                    int cell = grid[line, column];
-                    if (cell == 0)
+                    int cell = gridMur[line, column];
+                   
+
+                    switch (cell)
                     {
-                        sp.Draw(white,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                        case 1 :
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 2 :
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 3 :
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 4 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 5 :
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 6 :
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 7 :
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 8 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 9 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 10 :
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 11 :
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 12 :
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 13 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 14 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        case 15 :
+                            sp.Draw(murDroite,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murGauche,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murHaut,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            sp.Draw(murBas,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                            break;
+                        
+                        
                     }
 
 
@@ -134,6 +212,7 @@ namespace GameJam17.Gameplay
         {
 
             DrawSol(sp);
+            DrawMur(sp);
   
         }
 
@@ -150,7 +229,7 @@ namespace GameJam17.Gameplay
             foreach (var n in chemins)
             {
                 Rectangle rect =new Rectangle(OriginX+(int)n.Position.X*TileWidth,OriginY+(int)n.Position.Y*TileHeight,TileWidth,TileHeight);
-                sp.Draw(white,rect,Color.Green);
+                sp.Draw(sol,rect,Color.Green);
                 
             }
 
