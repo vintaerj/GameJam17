@@ -6,6 +6,7 @@ using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 using AlgoStar.Boost;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Vector2 = System.Numerics.Vector2;
@@ -16,7 +17,14 @@ namespace GameJam17.Gameplay
     {
         public Graph graph;
         public int[,] grid;
+        public int[,] gridMur;
         private Texture2D white;
+        private Texture2D murGauche;
+        private Texture2D murHaut;
+        private Texture2D murDroite;
+        private Texture2D murBas;
+        private Texture2D sol;
+        
         private int TileWidth = 32;
         private int TileHeight = 32;
         private int OriginX = 100;
@@ -24,19 +32,34 @@ namespace GameJam17.Gameplay
         private bool isDrawChemin = false;
         
 
-        public Grid(int[,] tab)
+        public Grid(int[,] grid)
         {
-            grid = tab;
-            graph = Graph.TabToGraph(tab);
+            this.grid = grid;
+            graph = Graph.TabToGraph(grid);
         }
 
-        public void Load(GraphicsDevice g)
+        public Grid(int[,] gridSol, int[,] gridMur) : this(gridSol)
+        {
+            this.gridMur = gridMur;
+
+        }
+
+        // Chargement des images.
+        public void Load(GraphicsDevice g,ContentManager c)
         {
             white = new Texture2D(g,1,1);
             white.SetData(new Color[]{Color.White});
-            
+
+            murGauche = c.Load<Texture2D>("Ressources/Salles/murGauche");
+            murHaut = c.Load<Texture2D>("Ressources/Salles/murHaut");
+            murDroite = c.Load<Texture2D>("Ressources/Salles/murDroite");
+            murBas = c.Load<Texture2D>("Ressources/Salles/murBas");
+            sol = c.Load<Texture2D>("Ressources/Salles/sol");
+
+
         }
 
+        // Mise à jour .
         public void Update(GameTime gameTime)
         {
             
@@ -58,64 +81,63 @@ namespace GameJam17.Gameplay
 
         }
 
+        // dessine le sol .
+        private void DrawSol(SpriteBatch sp)
+        {
+            for (int line = 0; line < grid.GetLength(0); line++)
+            {
+               
+                for (int column = 0; column < grid.GetLength(1); column++)
+                {
+                   
+                    int cell = grid[line, column];
+                    if (cell == 0)
+                    {
+                        sp.Draw(white,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                    }
+
+
+
+
+                }
+
+               
+            }
+        }
+        
+        // dessine les murs .
+        private void DrawMur(SpriteBatch sp)
+        {
+            for (int line = 0; line < grid.GetLength(0); line++)
+            {
+               
+                for (int column = 0; column < grid.GetLength(1); column++)
+                {
+                   
+                    int cell = grid[line, column];
+                    if (cell == 0)
+                    {
+                        sp.Draw(white,new Rectangle(OriginX+column*TileWidth,OriginY+line*TileHeight,TileWidth,TileHeight),Color.White);
+                    }
+
+
+
+
+                }
+
+               
+            }
+        }
+
+        // Dessine .
         public void Draw(SpriteBatch sp)
         {
 
-
-            int cellW = 28;
-            int cellH = 28;
-
-            int posX = OriginX;
-            int posY = OriginY;
-        
-            for (int line = 0; line < grid.GetLength(0); line++)
-            {
-                Boolean bLignePaire = (line % 2 == 0);
-                for (int column = 0; column < grid.GetLength(1); column++)
-                {
-                    Boolean bColonnePaire = (column % 2 == 0);
-
-                  
-                    //Ligne paire + colonne impaire = mur vertical
-                    if (bLignePaire == false && bColonnePaire  && grid[line, column] == 1)
-                    {
-          
-                        sp.Draw(white, new Rectangle(posX, posY, 3, cellH), Color.Black);
-
-                    }
-                    
-                    if (bLignePaire && bColonnePaire == false && grid[line, column] == 1)
-                    {
-          
-                        sp.Draw(white, new Rectangle(posX, posY, cellW, 3), Color.Black);
-
-                    }
-
-                    if (!bLignePaire && !bColonnePaire && grid[line, column] == 0)
-                    {
-                        sp.Draw(white, new Rectangle(posX, posY, cellW, cellH), Color.White);
-                    }
-
-                    if (bColonnePaire)
-                    {
-                        posX = posX + cellW;
-                    }
-                    
-
-
-
-                }
-
-                if (bLignePaire)
-                {
-                    posY = posY + cellH;
-                }
-                posX = OriginX;
-            }
-         
-            
+            DrawSol(sp);
+  
         }
 
+        // Desinne le chemin d'un point A à B
         private void DrawChemin(SpriteBatch sp,System.Numerics.Vector2 depart, System.Numerics.Vector2 fin)
         {
             graph = Graph.TabToGraph(grid);
@@ -134,6 +156,7 @@ namespace GameJam17.Gameplay
 
         }
 
+        // Change une case .
         public void changeCase(double positionX,double positionY,int valeur)
         {
             int line = (int)Math.Floor((positionY- OriginY) / TileHeight );
@@ -149,6 +172,7 @@ namespace GameJam17.Gameplay
             
         }
 
+        // recupere Id.
         public int GetId(Vector2 v)
         {
             float positionX = v.X - OriginX;

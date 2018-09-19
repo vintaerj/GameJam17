@@ -28,6 +28,8 @@ namespace GameJam17
            
            
         });
+        
+        
        
             
        
@@ -49,7 +51,8 @@ namespace GameJam17
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            grid.Load(GraphicsDevice);
+            grid.Load(GraphicsDevice,Content);
+            
 
             // TODO: use this.Content to load your game content here
         }
