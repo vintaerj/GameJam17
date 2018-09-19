@@ -21,11 +21,11 @@ namespace GameJam17
         
         Grid grid = new Grid(new int[,]
         {
-            { 1,1,1,1,1,1,1,1,1,1},
-            { 1,0,0,0,0,0,0,0,0,1},
-            { 1,0,0,0,0,0,0,0,0,1},
-            { 1,0,0,0,0,0,1,0,0,1},
-            { 1,1,1,1,1,1,1,1,1,1},
+            { 1,1},
+            { 1,0},
+            { 1,0},
+            { 1,1},
+           
            
         });
        
@@ -62,9 +62,8 @@ namespace GameJam17
 
             // TODO: Add your update logic here
 
-
-            MouseState m = Mouse.GetState();
-            Console.WriteLine(grid.GetId(new System.Numerics.Vector2(m.X,m.Y) ));
+            grid.Update(gameTime);
+          
 
             base.Update(gameTime);
         }
