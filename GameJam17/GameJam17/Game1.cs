@@ -21,13 +21,24 @@ namespace GameJam17
         
         Grid grid = new Grid(new int[,]
         {
-            { 1,1},
-            { 1,0},
-            { 1,0},
-            { 1,1},
+            { 1,1,1,1,1,1,1,1},
+            { 1,0,0,1,0,0,0,1},
+            { 1,0,0,1,0,0,0,1},
+            { 1,1,1,1,1,1,1,1}
            
            
+        } ,new int[,]
+        {
+            { 0,0,0,0,0,0,0,0},
+            { 5,1,1,1,6,0,0,0},
+            { 7,8,3,3,8,0,0,0},
+            { 0,0,0,0,0,0,0,0},
+            
+            
+            
         });
+        
+        
        
             
        
@@ -49,7 +60,8 @@ namespace GameJam17
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            grid.Load(GraphicsDevice);
+            grid.Load(GraphicsDevice,Content);
+            
 
             // TODO: use this.Content to load your game content here
         }

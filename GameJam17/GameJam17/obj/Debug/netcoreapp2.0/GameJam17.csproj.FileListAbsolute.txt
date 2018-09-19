@@ -10,3 +10,10 @@ C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.
 C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.dll
 C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\obj\Debug\netcoreapp2.0\GameJam17.pdb
 C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\white.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Vehicules\camion.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Salles\murBas.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Salles\murDroite.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Salles\murGauche.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Salles\murHaut.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Salles\sol.xnb
+C:\Users\jorda\workspace\C#\GameJam17\GameJam17\GameJam17\bin\Debug\netcoreapp2.0\Content\Ressources\Backgrounds\terre_desolee.xnb
