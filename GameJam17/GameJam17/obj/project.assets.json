@@ -800,28 +800,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tabouler\\.nuget\\packages\\": {},
+    "C:\\Users\\jorda\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
+      "projectUniqueName": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
       "projectName": "GameJam17",
-      "projectPath": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
-      "packagesPath": "C:\\Users\\tabouler\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\obj\\",
+      "projectPath": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
+      "packagesPath": "C:\\Users\\jorda\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\tabouler\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\jorda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

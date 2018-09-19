@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
+    "projectUniqueName": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
     "projectName": "GameJam17",
-    "projectPath": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
-    "outputPath": "C:\\Users\\tabouler\\RiderProjects\\GameJam17\\GameJam17\\GameJam17\\obj\\",
+    "projectPath": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\GameJam17.csproj",
+    "outputPath": "C:\\Users\\jorda\\workspace\\C#\\GameJam17\\GameJam17\\GameJam17\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
       "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
